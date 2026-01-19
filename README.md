@@ -15,33 +15,31 @@ El enfoque principal es demostrar el dominio de **Terraform** bajo estándares E
 
 | Proveedor | Proyecto | Estatus | Tecnologías Clave |
 | :--- | :--- | :--- | :--- |
-| **AWS** | [Scalable Web Cluster](./aws/projects/scalable-webapp) | ✅ Desplegado | VPC, NAT GW, Security Groups, S3 Backend |
-| **AWS** | [EKS Managed Cluster](./aws/projects/eks-cluster) | 📅 Próximamente | EKS, Managed Node Groups, IAM Roles |
-| **OCI** | [Cloud Native Architecture](./oci/projects/cloud-native) | 📅 Pendiente | OKE, VCN, Autonomous DB |
+| **AWS** | [Scalable Web Cluster](./aws/projects/scalable-webapp) | ✅ Completado | VPC, EKS, NAT GW, Load Balancer |
+| **OCI** | [Cloud Native Architecture](./oci/projects/cloud-native) | 🏗️ En Diseño | OKE, VCN, NSG, Compartments |
 | **GCP** | [Data Pipeline Infra](./gcp/projects/data-infra) | 📅 Pendiente | GKE, Cloud SQL, Pub/Sub |
 
 ---
 
-## 📂 Proyecto Destacado: AWS Foundation (Network & Security)
+## 📂 Proyecto Destacado: AWS EKS Full Stack Foundation
 
-He implementado la base de red bajo el estándar de **Defensa en Profundidad**, utilizando el bloque CIDR `192.168.0.0/16` para simular un entorno corporativo robusto.
+He finalizado con éxito el despliegue de una infraestructura completa en AWS que soporta cargas de trabajo orquestadas por Kubernetes.
+
+### **Logros Técnicos:**
+* **Networking:** Creación de una VPC con arquitectura Multi-AZ (192.168.0.0/16) utilizando subredes públicas y privadas.
+* **Cómputo (EKS):** Implementación de un clúster de **Amazon EKS** con **Managed Node Groups** (instancias t3.small) para optimización de costos y alta disponibilidad.
+* **Seguridad:** Configuración de **Security Group Referencing** para aislar los nodos y permitir tráfico únicamente desde el Load Balancer.
+* **Validación de Workload:** Despliegue exitoso de un servicio Nginx tipo `LoadBalancer`, validando la conectividad de extremo a extremo y la resolución de DNS externa.
 
 
-
-### **Detalles Técnicos:**
-* **Multi-AZ Resilience:** Despliegue distribuido en 2 Zonas de Disponibilidad (`us-east-1a`, `us-east-1b`) para garantizar Alta Disponibilidad (HA).
-* **Segregación de Capas (Tiered Networking):**
-    * **Subredes Públicas:** Para Load Balancers y puntos de entrada con **Internet Gateway**.
-    * **Subredes Privadas:** Para cargas críticas (EKS/DB), con salida segura vía **NAT Gateway**.
-* **Security Group Referencing:** La capa de aplicación solo acepta tráfico originado desde el Security Group del Load Balancer, eliminando vectores de ataque externos directos.
-* **State Management:** Uso de **S3 Backend** con encripción para el manejo del estado de Terraform.
 
 ---
 
 ## 🛠️ Estándares Técnicos Aplicados
-* **Modularidad:** Uso de módulos reutilizables (DRY) para VPC y Seguridad.
-* **Seguridad:** Implementación de privilegios mínimos y aislamiento de recursos.
-* **Infraestructura Inmutable:** Todo cambio se gestiona exclusivamente vía código.
+* **Modularidad:** Estructura basada en módulos reutilizables para VPC, Seguridad y EKS.
+* **Troubleshooting Activo:** Resolución de conflictos de aprovisionamiento de tipos de instancia y límites de cuenta en tiempo real.
+* **Clean Lifecycle:** Ciclo completo de vida de la infraestructura probado (Init -> Plan -> Apply -> Workload Test -> Destroy).
+
 
 ---
 

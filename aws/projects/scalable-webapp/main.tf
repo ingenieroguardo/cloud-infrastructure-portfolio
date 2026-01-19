@@ -20,3 +20,12 @@ module "security" {
   project_name = "portfolio-aws"
   vpc_id       = module.network.vpc_id # Encadenamiento de modulos
 }
+
+module "eks" {
+  source = "../../modules/eks"
+
+  project_name       = "portfolio-aws"
+  vpc_id             = module.network.vpc_id
+  private_subnet_ids = module.network.private_subnet_ids
+  app_sg_id          = module.security.app_sg_id
+}
