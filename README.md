@@ -55,4 +55,6 @@ He finalizado con éxito el despliegue de una infraestructura completa en AWS qu
 📧 Contacto
 ¿Interesado en colaborar o conocer más sobre mi experiencia?
 
+[Perfil Linkedin](https://www.linkedin.com/in/idelfonsocloudsolutionsengineer) 
+
 [https://www.linkedin.com/in/idelfonsocloudsolutionsengineer/ | ingeniero.guardo@gmail.com]
