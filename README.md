@@ -43,6 +43,24 @@ He finalizado con éxito el despliegue de una infraestructura completa en AWS qu
 
 ---
 
+## ☁️ Oracle Cloud Infrastructure (OCI) Implementation
+
+Para la segunda fase de mi portafolio "Cloud-Native", decidí replicar la arquitectura de AWS en OCI, aprovechando la flexibilidad de sus recursos y su robusto servicio de Kubernetes (OKE).
+
+### Arquitectura de Red y Seguridad
+* **VCN & Segregación:** Implementación de una VCN con subredes públicas para el balanceo de carga y privadas para los nodos de cómputo.
+* **Defensa en Profundidad:** Uso de **Network Security Groups (NSGs)** para el control de tráfico a nivel de VNIC, eliminando la dependencia de Security Lists de subred y permitiendo un encadenamiento de reglas más seguro (referenciando el NSG del Load Balancer desde el pool de nodos).
+
+### Kubernetes Engine (OKE)
+* **Shapes Flexibles:** Configuración de un clúster OKE utilizando instancias `VM.Standard.E4.Flex` (AMD EPYC), optimizando costos al asignar 1 OCPU y 16GB de RAM por nodo.
+* **VCN-Native Pod Networking:** Implementación de redes nativas para pods, mejorando el rendimiento y la visibilidad de la red dentro del clúster.
+* **Imagen Validada:** Uso de imágenes de Oracle Linux 8.10 (probadas previamente en entornos de producción como *Tesorería 3.0*) para garantizar estabilidad.
+
+### Infraestructura como Código (IaC)
+El despliegue es 100% automatizado mediante **Terraform**, utilizando un diseño modular que permite la portabilidad de componentes entre diferentes regiones (en este caso, operando sobre `us-chicago-1`).
+
+---
+
 ## 📂 Estructura del Repositorio
 ```bash
 .
