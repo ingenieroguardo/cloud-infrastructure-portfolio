@@ -11,13 +11,16 @@ El enfoque principal es demostrar el dominio de **Terraform** bajo estándares E
 
 ---
 
-## 🏗️ Roadmap de Implementación
+## 🗺️ Roadmap de Implementación
 
-| Proveedor | Proyecto | Estatus | Tecnologías Clave |
-| :--- | :--- | :--- | :--- |
-| **AWS** | [Scalable Web Cluster](./aws/projects/scalable-webapp) | ✅ Completado | VPC, EKS, NAT GW, Load Balancer |
-| **OCI** | [Cloud Native Architecture](./oci/projects/cloud-native) | 🏗️ En Diseño | OKE, VCN, NSG, Compartments |
-| **GCP** | [Data Pipeline Infra](./gcp/projects/data-infra) | 📅 Pendiente | GKE, Cloud SQL, Pub/Sub |
+- [x] **Fase 1: AWS Foundation** - EKS Cluster, VPC, IAM Roles y despliegue inicial con Terraform.
+- [x] **Fase 2: OCI Expansion (Multi-Cloud)** - Despliegue de **OKE (Oracle Kubernetes Engine)** en la región de Chicago.
+    - Implementación de **Network Security Groups (NSGs)** para seguridad granular.
+    - Optimización de costos mediante **Flexible Shapes** (Intel/AMD).
+    - Resolución de compatibilidad de imágenes y topología de ADs.
+- [ ] **Fase 3: GitOps & Observabilidad** (En progreso 🚀)
+    - Integración total con ArgoCD para despliegues automáticos.
+    - Implementación de Service Mesh (Istio) y monitoreo.
 
 ---
 
