@@ -1,0 +1,22 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files (Muy importante: contienen data sensible como contraseñas)
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Exclude any .tfvars files (pueden contener secretos)
+*.tfvars
+*.tfvars.json
+
+# Ignore variables de entorno locales
+.envrc
+.env
+
+# Ignore temporary files created by editors
+.vscode/
+.idea/
+.terraform.lock.hcl
