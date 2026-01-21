@@ -1,0 +1,7 @@
+
+# Responsabilidad específica sobre los módulos de infraestructura
+/oci/   @ingenieroguardo
+/aws/   @ingenieroguardo
+
+# proteger el archivo de configuración de Terraform
+/*.tf    @ingenieroguardo
