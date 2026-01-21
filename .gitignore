@@ -20,3 +20,28 @@ crash.log
 .vscode/
 .idea/
 .terraform.lock.hcl
+
+# Terraform local state y directorios de trabajo
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Variables sensibles (¡Muy importante!)
+*.tfvars
+*.tfvars.json
+
+# Credenciales de OCI y AWS
+.oci/
+.aws/
+*.pem
+*.key
+
+# Archivos temporales del sistema
+.DS_Store
+
+echo "TestVcnOCI/" >> .gitignore
+# También es buena práctica ignorar archivos temporales de Terraform si no lo haces ya
+echo ".terraform/" >> .gitignore
+echo "*.tfstate*" >> .gitignore
+echo "*.tfvars" >> .gitignore

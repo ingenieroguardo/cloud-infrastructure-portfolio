@@ -7,4 +7,3 @@ output "services_cidr" {
   # Forzamos que devuelva el bloque de IPs
   value = data.oci_core_services.all_services.services[0].cidr_block
 }
-

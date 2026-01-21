@@ -42,22 +42,41 @@ He finalizado con éxito el despliegue de una infraestructura completa en AWS qu
 
 
 ---
+# OCI Cloud-Native Infrastructure: Phase II 🚀
 
-## ☁️ Oracle Cloud Infrastructure (OCI) Implementation
+Este repositorio contiene la implementación de la segunda fase de mi portafolio **Cloud-Native**, migrando y escalando la arquitectura hacia **Oracle Cloud Infrastructure (OCI)**. El objetivo principal es demostrar un despliegue de grado empresarial utilizando **Kubernetes (OKE)** con un enfoque estricto en seguridad, rendimiento y optimización de costos.
 
-Para la segunda fase de mi portafolio "Cloud-Native", decidí replicar la arquitectura de AWS en OCI, aprovechando la flexibilidad de sus recursos y su robusto servicio de Kubernetes (OKE).
+## 🏗️ Arquitectura de Red y Topología
 
-### Arquitectura de Red y Seguridad
-* **VCN & Segregación:** Implementación de una VCN con subredes públicas para el balanceo de carga y privadas para los nodos de cómputo.
-* **Defensa en Profundidad:** Uso de **Network Security Groups (NSGs)** para el control de tráfico a nivel de VNIC, eliminando la dependencia de Security Lists de subred y permitiendo un encadenamiento de reglas más seguro (referenciando el NSG del Load Balancer desde el pool de nodos).
+La infraestructura de red ha sido diseñada para garantizar una segregación total de funciones y minimizar la superficie de exposición:
 
-### Kubernetes Engine (OKE)
-* **Shapes Flexibles:** Configuración de un clúster OKE utilizando instancias `VM.Standard.E4.Flex` (AMD EPYC), optimizando costos al asignar 1 OCPU y 16GB de RAM por nodo.
-* **VCN-Native Pod Networking:** Implementación de redes nativas para pods, mejorando el rendimiento y la visibilidad de la red dentro del clúster.
-* **Imagen Validada:** Uso de imágenes de Oracle Linux 8.10 (probadas previamente en entornos de producción como *Tesorería 3.0*) para garantizar estabilidad.
+* **VCN & Segregación:** Implementación de una Virtual Cloud Network (`192.168.0.0/16`) con una división estratégica de subredes:
+    * **Public API Endpoint:** Subred `/30` dedicada exclusivamente al acceso del plano de control de Kubernetes.
+    * **Public Load Balancer:** Subred `/24` para la exposición controlada de servicios hacia Internet.
+    * **Private Worker Nodes:** Subred `/24` aislada, donde residen los nodos de cómputo, sin direccionamiento público.
+* **Networking de Pods (Flannel):** Se ha implementado el CNI **Flannel**, proporcionando una red overlay ligera y eficiente que facilita la comunicación inter-pod sin sobrecarga innecesaria.
+* **Segregación de Tráfico:** Uso de **Security Lists** por subred, permitiendo un flujo de tráfico unidireccional: los nodos pueden salir a Internet vía **NAT Gateway** y hablar con los servicios de Oracle vía **Service Gateway**, pero permanecen inaccesibles desde el exterior.
 
-### Infraestructura como Código (IaC)
-El despliegue es 100% automatizado mediante **Terraform**, utilizando un diseño modular que permite la portabilidad de componentes entre diferentes regiones (en este caso, operando sobre `us-chicago-1`).
+
+
+## ☸️ Managed Kubernetes (OKE)
+
+El despliegue del clúster **Oracle Cloud Infrastructure Container Engine for Kubernetes (OKE)** se centra en la estabilidad y la modernidad:
+
+* **Versión v1.34.1:** Uso de una de las versiones más recientes, alineada con las mejores prácticas de la comunidad de Kubernetes.
+* **Shapes Flexibles:** Configuración de un Node Pool utilizando instancias **VM.Standard3.Flex** (Intel Ice Lake). Se optimizaron los recursos asignando **1 OCPU y 16GB de RAM** por nodo, permitiendo un escalado vertical preciso según la carga.
+* **Imágenes Validadas:** Implementación de imágenes de **Oracle Linux 8.10 (OKE-Optimized)**. Estas imágenes han sido testeadas rigurosamente en entornos de alta demanda (como el proyecto *Tesorería 3.0*) para garantizar un tiempo de actividad (uptime) superior.
+* **Acceso Seguro:** El punto final de la API es público para facilitar la administración remota, mientras que el tráfico de datos se mantiene estrictamente dentro de la red privada.
+
+
+
+## 🛠️ Infraestructura como Código (IaC)
+
+El despliegue es **100% automatizado mediante Terraform**, siguiendo principios de modularidad y portabilidad:
+
+* **Diseño Modular:** Separación clara entre los módulos de red (`network`) y orquestación (`oke`), permitiendo reutilizar la lógica en distintas regiones o tenancies.
+* **Gestión Dinámica:** Uso de *Data Sources* para la identificación en tiempo real de *Availability Domains* y *Service IDs* en la región de **us-chicago-1**, eliminando el "hardcoding" y aumentando la resiliencia del código.
+* **Provider OCI:** Configuración avanzada del provider para manejar ciclos de vida complejos, incluyendo el uso de `taints` para actualizaciones controladas de infraestructura.
 
 ---
 
