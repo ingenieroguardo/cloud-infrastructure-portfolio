@@ -97,7 +97,7 @@ Este proyecto está bajo la **Licencia MIT**, lo que permite su uso y referencia
 
 Como autor y único dueño de este repositorio (definido en el archivo `CODEOWNERS`), garantizo que la infraestructura aquí descrita sigue los estándares de **Well-Architected Framework** de AWS y OCI. Cualquier contribución o sugerencia externa debe ser canalizada a través de un *Pull Request* para su debida revisión técnica.
 
-**Autor:** [Idelfonso Guardo](https://github.com/tu-usuario-github)  
+**Autor:** [Idelfonso Guardo](https://github.com/ingenieroguardo)  
 **Rol:** Cloud & Solutions Engineer
 
 --- 
