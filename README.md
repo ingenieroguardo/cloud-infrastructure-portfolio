@@ -89,6 +89,19 @@ El despliegue es **100% automatizado mediante Terraform**, siguiendo principios 
 ├── oci/
 └── gcp/
 
+---
+
+## ⚖️ Licencia e Integridad del Código
+
+Este proyecto está bajo la **Licencia MIT**, lo que permite su uso y referencia para fines educativos y profesionales, siempre otorgando el crédito correspondiente. 
+
+Como autor y único dueño de este repositorio (definido en el archivo `CODEOWNERS`), garantizo que la infraestructura aquí descrita sigue los estándares de **Well-Architected Framework** de AWS y OCI. Cualquier contribución o sugerencia externa debe ser canalizada a través de un *Pull Request* para su debida revisión técnica.
+
+**Autor:** [Idel](https://github.com/tu-usuario-github)  
+**Rol:** Cloud & Solutions Engineer
+
+--- 
+
 📧 Contacto
 ¿Interesado en colaborar o conocer más sobre mi experiencia?
 
