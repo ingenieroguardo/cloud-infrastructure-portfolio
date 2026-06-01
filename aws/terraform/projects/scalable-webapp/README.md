@@ -33,7 +33,7 @@ Para garantizar la integridad y la colaboración segura en el despliegue de infr
 - **Almacenamiento de Estado**: Se utiliza un bucket **Amazon S3** (`portafolio-cloud-s3`) para almacenar el archivo `terraform.tfstate` de manera persistente y versionada, permitiendo auditorías y recuperación ante desastres.
 - **Bloqueo de Estado (State Locking)**: Se implementa una tabla **Amazon DynamoDB** para gestionar el bloqueo de estado, evitando colisiones cuando múltiples procesos o colaboradores intentan aplicar cambios simultáneamente.
 
-![Estado Remoto S3](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/State-S3.jpg)
+![Estado Remoto S3](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/State-S3.png)
 *Visualización del bucket S3 gestionando el versionado del estado de Terraform.*
 
 ---
