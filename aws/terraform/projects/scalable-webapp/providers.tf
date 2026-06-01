@@ -10,18 +10,18 @@ terraform {
 
   # Configuración del Backend Remoto
   backend "s3" {
-    bucket  = "portafolio-cloud-s3" # El nombre de tu bucket existente
-    key     = "projects/aws-portfolio/terraform.tfstate"
-    region  = "us-east-1" # La región donde está tu bucket
-    encrypt = true
-    # Opcional: dynamodb_table = "tu-tabla-lock"     # Si tienes una tabla para State Locking
-    profile = "aws-idel"
+    bucket         = "portafolio-cloud-s3-idel"
+    key            = "projects/aws-portfolio/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    profile        = "terraform"
+    dynamodb_table = "terraform-state-lock"
   }
 }
 
 provider "aws" {
   region  = "us-east-1"
-  profile = "aws-idel"
+  profile = "terraform"
 
   default_tags {
     tags = {

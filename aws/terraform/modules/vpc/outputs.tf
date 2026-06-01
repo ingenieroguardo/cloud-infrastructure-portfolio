@@ -1,6 +1,6 @@
 output "vpc_id" {
   description = "El ID de la VPC creada"
-  value       = aws_vpc.this.id # Esto expone el ID del recurso
+  value       = aws_vpc.this.id
 }
 
 output "public_subnet_ids" {
