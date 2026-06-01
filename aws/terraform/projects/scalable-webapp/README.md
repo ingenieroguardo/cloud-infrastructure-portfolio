@@ -27,6 +27,15 @@ La infraestructura cuenta con despliegue automatizado mediante GitHub Actions:
 
 ![Acciones CI/CD](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/Actions%20CICD.png)
 
+## ☁️ Gestión de Estado Remoto
+Para garantizar la integridad y la colaboración segura en el despliegue de infraestructura, este proyecto utiliza un backend remoto:
+
+- **Almacenamiento de Estado**: Se utiliza un bucket **Amazon S3** (`portafolio-cloud-s3`) para almacenar el archivo `terraform.tfstate` de manera persistente y versionada, permitiendo auditorías y recuperación ante desastres.
+- **Bloqueo de Estado (State Locking)**: Se implementa una tabla **Amazon DynamoDB** para gestionar el bloqueo de estado, evitando colisiones cuando múltiples procesos o colaboradores intentan aplicar cambios simultáneamente.
+
+![Estado Remoto S3](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/State-S3.jpg)
+*Visualización del bucket S3 gestionando el versionado del estado de Terraform.*
+
 ---
 
 ## 🚀 Despliegue
