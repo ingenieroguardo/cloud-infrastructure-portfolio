@@ -14,14 +14,12 @@ terraform {
     key            = "projects/aws-portfolio/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
-    profile        = "terraform"
     dynamodb_table = "terraform-state-lock"
   }
 }
 
 provider "aws" {
-  region  = "us-east-1"
-  profile = "terraform"
+  region = "us-east-1"
 
   default_tags {
     tags = {
