@@ -4,38 +4,36 @@ Este proyecto despliega una infraestructura de nube altamente disponible y segur
 
 ## 🏗️ Decisiones de Arquitectura
 
-- **Networking**: Se ha diseñado una VPC con segmentación de red estricta, utilizando subredes públicas para el balanceo de carga y subredes privadas para los recursos de cómputo (Worker Nodes).
-- **Alta Disponibilidad**: El despliegue utiliza múltiples zonas de disponibilidad (Multi-AZ) para garantizar la resiliencia del plano de cómputo.
-- **NAT Gateway**: Se ha implementado un NAT Gateway para permitir la salida controlada de tráfico desde las subredes privadas. 
-  - *Nota técnica*: Para este laboratorio, se utiliza un único NAT Gateway para optimización de costos. En entornos de alta disponibilidad crítica, se recomienda el despliegue de un NAT Gateway por zona de disponibilidad.
-- **Seguridad**: Se aplica el principio de menor privilegio mediante *Security Group Referencing*, permitiendo tráfico exclusivamente desde el Application Load Balancer (ALB) hacia los nodos de EKS.
+- **Networking**: VPC con segmentación estricta; subredes públicas para balanceadores y privadas para cómputo.
+- **Alta Disponibilidad**: Implementación Multi-AZ para resiliencia del plano de datos.
+- **NAT Gateway**: Salida controlada a Internet. *Nota: NAT único para optimización de costos en laboratorio.*
+- **Seguridad**: *Security Group Referencing* para aislar tráfico exclusivo desde el ALB hacia los nodos de EKS.
 
-## 🗺️ Visualización de la Arquitectura
+## 🗺️ Visualización de recursos desplegados 
 
-Para garantizar una segregación clara entre los componentes públicos y privados, la arquitectura se despliega bajo la siguiente topología:
+La arquitectura implementada asegura una separación clara entre las capas de red:
 
-![Mapa de Recursos VPC](https://github.com/tu-usuario/cloud-infrastructure-portfolio/blob/main/aws/architecture/vpc-resource-map.png)
-*Vista de los componentes de red (VPC, Subredes y Tablas de Enrutamiento).*
+![Mapa de Recursos VPC](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/vpc-resource-map.png)
 
-![Estado del Cluster EKS](https://github.com/tu-usuario/cloud-infrastructure-portfolio/blob/main/aws/architecture/eks-cluster-status.png)
-*Estado activo del clúster en el plano de control de AWS.*
+![Estado del Cluster EKS](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/eks-cluster-status.png)
+
+## ⚙️ CI/CD Pipeline con GitHub Actions
+
+La infraestructura cuenta con despliegue automatizado mediante GitHub Actions:
+
+- **Validación Continua**: `terraform validate` y `plan` automáticos en cada `push`/`pull request`.
+- **Despliegue Controlado**: Job de `apply` protegido mediante `workflow_dispatch` (gatillo manual).
+- **Seguridad**: Gestión de credenciales mediante *GitHub Secrets*.
+
+![Acciones CI/CD](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/Actions%20CICD.png)
 
 ---
-
-## 🛠️ Requisitos previos
-
-- AWS CLI configurado con el perfil `aws-idel`.
-- Terraform >= 1.5.0.
-- Bucket S3 y tabla DynamoDB configurados para el estado remoto (definidos en `providers.tf`).
 
 ## 🚀 Despliegue
 
-Para desplegar esta arquitectura:
+1. Inicializar: `terraform init`
+2. Validar: `terraform validate`
+3. Planificar: `terraform plan -out=tfplan`
+4. Aplicar: `terraform apply "tfplan"`
 
-1. Inicializar el entorno: `terraform init`
-2. Validar sintaxis: `terraform validate`
-3. Planificar cambios: `terraform plan -out=tfplan`
-4. Aplicar despliegue: `terraform apply "tfplan"`
-
----
 **Autor:** [Idelfonso Guardo](https://github.com/ingenieroguardo)
