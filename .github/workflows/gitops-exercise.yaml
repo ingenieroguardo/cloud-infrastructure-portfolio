@@ -22,6 +22,11 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
+            # Definir el SHA corto para los tags
+            - name: Set Short SHA
+              id: vars
+              run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
             # --- API ---
             - name: Build and Push API
               uses: docker/build-push-action@v4
@@ -29,7 +34,9 @@ jobs:
                   context: .
                   file: ./gitops-exercise/app-api/src/Dockerfile
                   push: true
-                  tags: ghcr.io/${{ github.repository_owner }}/app-api:latest
+                  tags: |
+                      ghcr.io/${{ github.repository_owner }}/app-api:${{ steps.vars.outputs.sha_short }}
+                      ghcr.io/${{ github.repository_owner }}/app-api:latest
 
             # --- Frontend ---
             - name: Build and Push Frontend
@@ -38,16 +45,22 @@ jobs:
                   context: .
                   file: ./gitops-exercise/app-frontend/src/Dockerfile
                   push: true
-                  tags: ghcr.io/${{ github.repository_owner }}/app-frontend:latest
+                  tags: |
+                      ghcr.io/${{ github.repository_owner }}/app-frontend:${{ steps.vars.outputs.sha_short }}
+                      ghcr.io/${{ github.repository_owner }}/app-frontend:latest
 
             # --- Update values ---
             - name: Update values.yaml files
               run: |
-                  SHORT_SHA=$(git rev-parse --short HEAD)
+                  SHORT_SHA=${{ steps.vars.outputs.sha_short }}
+                  # Actualizamos el tag en ambos archivos
                   sed -i "s|tag:.*|tag: ${SHORT_SHA}|g" gitops-exercise/k8s/releases/values-api.yaml
                   sed -i "s|tag:.*|tag: ${SHORT_SHA}|g" gitops-exercise/k8s/releases/values-frontend.yaml
+
+                  # Configuración de git para el commit automático
                   git config user.name "GitHub Actions"
                   git config user.email "actions@github.com"
+
+                  # Añadimos y hacemos commit solo si hubo cambios
                   git add gitops-exercise/k8s/releases/values-api.yaml gitops-exercise/k8s/releases/values-frontend.yaml
-                  git commit -m "Update image tags to ${SHORT_SHA}"
-                  git push
+                  git diff --quiet && git diff --staged --quiet || (git commit -m "chore: update image tags to ${SHORT_SHA}" && git push)
