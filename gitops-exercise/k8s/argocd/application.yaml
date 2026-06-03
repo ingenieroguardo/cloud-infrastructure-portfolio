@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
     targetRevision: gitops-exercise
-    path: k8s/helm/base-app
+    path: gitops-exercise/k8s/helm/base-app
     helm:
       valueFiles:
-        - k8s/releases/values-api.yaml
+        - gitops-exercise/k8s/releases/values-api.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -32,10 +32,10 @@ spec:
   source:
     repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
     targetRevision: gitops-exercise
-    path: k8s/helm/base-app
+    path: gitops-exercise/k8s/helm/base-app
     helm:
       valueFiles:
-        - k8s/releases/values-frontend.yaml
+        - gitops-exercise/k8s/releases/values-frontend.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default
