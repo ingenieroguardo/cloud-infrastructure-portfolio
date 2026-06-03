@@ -1,7 +1,7 @@
 name: app-frontend
 image:
   repository: ghcr.io/ingenieroguardo/app-frontend
-  tag: 7cdba29
+  tag: ab27b99
 containerPort: 80
 env:
   apiUrl: "http://app-api:5000/stats"
