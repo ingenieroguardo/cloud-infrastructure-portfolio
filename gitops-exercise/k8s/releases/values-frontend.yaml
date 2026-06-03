@@ -1,7 +1,7 @@
 name: app-frontend
 image:
   repository: tu-usuario/app-frontend
-  tag: 6799410
+  tag: c3b77a9
 containerPort: 80
 env:
   apiUrl: "http://app-api:5000/stats" # La URL interna de K8s
