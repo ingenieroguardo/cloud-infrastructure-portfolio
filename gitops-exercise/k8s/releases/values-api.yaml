@@ -1,7 +1,7 @@
 name: app-api
 image:
   repository: tu-usuario/app-api
-  tag: a1af22a
+  tag: 05428a0
 containerPort: 5000
 ingress:
   enabled: false
