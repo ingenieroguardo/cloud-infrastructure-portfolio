@@ -12,7 +12,7 @@ spec:
     path: gitops-exercise/k8s/helm/base-app
     helm:
       valueFiles:
-        - gitops-exercise/k8s/releases/values-api.yaml
+        - "../../releases/values-api.yaml"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -35,7 +35,7 @@ spec:
     path: gitops-exercise/k8s/helm/base-app
     helm:
       valueFiles:
-        - gitops-exercise/k8s/releases/values-frontend.yaml
+        - "../../releases/values-frontend.yaml"
   destination:
     server: https://kubernetes.default.svc
     namespace: default
