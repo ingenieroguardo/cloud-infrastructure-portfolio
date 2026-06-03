@@ -1,0 +1,10 @@
+name: app-frontend
+image:
+  repository: tu-usuario/app-frontend
+  tag: v1
+containerPort: 80
+env:
+  apiUrl: "http://app-api:5000/stats" # La URL interna de K8s
+ingress:
+  enabled: true
+  host: frontend.local

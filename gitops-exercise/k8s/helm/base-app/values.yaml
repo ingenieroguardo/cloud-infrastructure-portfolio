@@ -1,0 +1,12 @@
+name: app-placeholder
+replicaCount: 1
+image:
+  repository: placeholder
+  tag: latest
+containerPort: 5000
+env:
+  apiUrl: ""
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi

@@ -1,0 +1,69 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-api
+  namespace: argocd
+spec:
+  project: cloud-portfolio
+  source:
+    repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
+    targetRevision: gitops-exercise
+    path: k8s/helm/base-app
+    helm:
+      valueFiles:
+        - k8s/releases/values-api.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-frontend
+  namespace: argocd
+spec:
+  project: cloud-portfolio
+  source:
+    repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
+    targetRevision: gitops-exercise
+    path: k8s/helm/base-app
+    helm:
+      valueFiles:
+        - k8s/releases/values-frontend.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability
+  namespace: argocd
+spec:
+  project: cloud-portfolio
+  source:
+    repoURL: "https://prometheus-community.github.io/helm-charts"
+    chart: kube-prometheus-stack
+    targetRevision: 60.0.0
+    helm:
+      releaseName: prometheus
+      valueFiles:
+        - $values/values-prometheus.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
