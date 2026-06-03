@@ -45,22 +45,20 @@ spec:
       selfHeal: true
 
 ---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability
+  namespace: argocd
 spec:
   project: cloud-portfolio
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
-  sources:
-    - repoURL: "https://prometheus-community.github.io/helm-charts"
-      targetRevision: 60.0.0
-      chart: kube-prometheus-stack
-    - repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
-      targetRevision: gitops-exercise
-      ref: values
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-  helm:
-    valueFiles:
-      - $values/gitops-exercise/k8s/observability/values-prometheus.yaml
+  source:
+    repoURL: "https://prometheus-community.github.io/helm-charts"
+    chart: kube-prometheus-stack
+    targetRevision: 60.0.0
+    helm:
+      valueFiles:
+        - values-prometheus.yaml
