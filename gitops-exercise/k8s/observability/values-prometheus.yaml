@@ -1,18 +1,23 @@
+crds:
+  enabled: true
+  keep: true
+
 grafana:
   enabled: true
   adminPassword: admin
   persistence:
     enabled: false
+
 prometheus:
   prometheusSpec:
     retention: 1d
     scrapeInterval: 30s
-
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: {}
     serviceMonitorNamespaceSelector: {}
 
 alertmanager:
   enabled: false
+
 pushgateway:
   enabled: false
