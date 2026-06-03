@@ -1,6 +1,6 @@
 name: app-frontend
 image:
-  repository: ghcr.io/ingenieroguardo/app-api
+  repository: ghcr.io/ingenieroguardo/app-frontend
   tag: latest
 containerPort: 80
 env:
