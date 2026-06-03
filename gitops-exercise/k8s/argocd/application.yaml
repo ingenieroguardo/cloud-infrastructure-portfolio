@@ -55,10 +55,18 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
-  source:
-    repoURL: "https://prometheus-community.github.io/helm-charts"
-    chart: kube-prometheus-stack
-    targetRevision: 60.0.0
-    helm:
-      valueFiles:
-        - values-prometheus.yaml
+  sources:
+    - repoURL: "https://prometheus-community.github.io/helm-charts"
+      chart: kube-prometheus-stack
+      targetRevision: 60.0.0
+
+    - repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
+      targetRevision: gitops-exercise
+      ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  helm:
+    valueFiles:
+      - $values/gitops-exercise/k8s/observability/values-prometheus.yaml
