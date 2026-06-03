@@ -8,6 +8,7 @@ spec:
     - "*"
   destinations:
     - server: "https://kubernetes.default.svc"
-      namespace: "default"
-    - server: "https://kubernetes.default.svc"
-      namespace: "monitoring"
+      namespace: "*" # Permite cualquier namespace
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
