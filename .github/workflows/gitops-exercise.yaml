@@ -26,7 +26,8 @@ jobs:
             - name: Build and Push API
               uses: docker/build-push-action@v4
               with:
-                  context: ./gitops-exercise/app-api
+                  context: ./gitops-exercise/app-api/src
+                  file: ./gitops-exercise/app-api/src/Dockerfile
                   push: true
                   tags: ghcr.io/${{ github.repository_owner }}/app-api:latest
 
@@ -34,7 +35,8 @@ jobs:
             - name: Build and Push Frontend
               uses: docker/build-push-action@v4
               with:
-                  context: ./gitops-exercise/app-frontend
+                  context: ./gitops-exercise/app-frontend/src
+                  file: ./gitops-exercise/app-frontend/src/Dockerfile
                   push: true
                   tags: ghcr.io/${{ github.repository_owner }}/app-frontend:latest
 
