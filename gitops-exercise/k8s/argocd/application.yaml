@@ -53,15 +53,14 @@ metadata:
 spec:
   project: cloud-portfolio
   source:
-    repoURL: "https://github.com/ingenieroguardo/cloud-infrastructure-portfolio.git"
-    targetRevision: gitops-exercise
-    path: gitops-exercise/k8s/observability
+    repoURL: "https://prometheus-community.github.io/helm-charts"
+    chart: kube-prometheus-stack
+    targetRevision: 60.0.0
     helm:
       releaseName: prometheus
-      chart: kube-prometheus-stack
-      targetRevision: 60.0.0
       valueFiles:
         - values-prometheus.yaml
+    path: gitops-exercise/k8s/observability
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

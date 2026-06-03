@@ -4,9 +4,10 @@ metadata:
   name: cloud-portfolio
   namespace: argocd
 spec:
-  description: "Proyecto para el ejercicio de GitOps"
   sourceRepos:
     - "*"
   destinations:
-    - namespace: default
-      server: https://kubernetes.default.svc
+    - server: "https://kubernetes.default.svc"
+      namespace: "default"
+    - server: "https://kubernetes.default.svc"
+      namespace: "monitoring"
