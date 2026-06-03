@@ -1,7 +1,7 @@
 name: app-api
 image:
   repository: ghcr.io/ingenieroguardo/app-api
-  tag: 4ae3b1e
+  tag: 1b5c6b4
 containerPort: 5000
 ingress:
   enabled: false
