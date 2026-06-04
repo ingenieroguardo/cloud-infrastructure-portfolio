@@ -23,12 +23,12 @@ El pipeline definido en `.github/workflows/gitops-exercise.yaml` garantiza que c
 2.  **Versioning:** Se utiliza el *Short SHA* del commit para etiquetar las imágenes, garantizando inmutabilidad y capacidad de rollback preciso.
 3.  **GitOps Sync:** Actualización automática de los archivos `values.yaml` en este repositorio, disparando la reconciliación en ArgoCD.
 
-![GitHub Actions Pipeline](docs/images/gitops/github%20actions.png)
+![GitHub Actions Pipeline](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/github%20actions.png)
 
 ### GitOps con ArgoCD
 ArgoCD actúa como el controlador del estado deseado. A través de la configuración de *Helm Charts*, ArgoCD despliega las aplicaciones basándose en los `values.yaml` específicos por ambiente, eliminando la configuración manual (`kubectl apply`).
 
-![ArgoCD Dashboard](docs/images/gitops/argocd.png)
+![ArgoCD Dashboard](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/argocd.png)
 
 ---
 
@@ -40,7 +40,7 @@ La infraestructura utiliza `helm/base-app` como template maestro, permitiendo un
 * **`helm/base-app/`**: Plantillas reutilizables (templates) que estandarizan el despliegue de recursos como Deployments, Services e Ingresses.
 * **`k8s/observability/`**: Contiene los `values-prometheus.yaml` que definen la configuración específica de observabilidad.
 
-![Microservicios Desplegados](docs/images/gitops/pods-app.png)
+![Microservicios Desplegados](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/pods-app.png)
 
 ---
 
@@ -50,9 +50,9 @@ La implementación del stack **Prometheus + Grafana** es crítica para el éxito
 * **Para el equipo técnico:** Permite la detección proactiva de fallos, latencia y cuellos de botella en los microservicios.
 * **Para el negocio:** Proporciona visibilidad en tiempo real del estado de los servicios, permitiendo decisiones basadas en datos y garantizando SLAs.
 
-![Grafana Dashboard](docs/images/gitops/grafana.png)
-![Grafana Detail](docs/images/gitops/grafana2.png)
-![Observability Pods](docs/images/gitops/pods-observability.png)
+![Grafana Dashboard](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/grafana.png)
+![Grafana Detail](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/grafana2.png)
+![Observability Pods](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/pods-observability.png)
 
 ---
 
