@@ -22,7 +22,7 @@ jobs:
                   username: ${{ github.actor }}
                   password: ${{ secrets.GITHUB_TOKEN }}
 
-            # Definir el SHA corto para los tags
+            # SHA corto para los tags
             - name: Set Short SHA
               id: vars
               run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
