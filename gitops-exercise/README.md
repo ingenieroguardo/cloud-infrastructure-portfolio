@@ -28,7 +28,7 @@ El pipeline definido en `.github/workflows/gitops-exercise.yaml` garantiza que c
 ### GitOps con ArgoCD
 ArgoCD actúa como el controlador del estado deseado. A través de la configuración de *Helm Charts*, ArgoCD despliega las aplicaciones basándose en los `values.yaml` específicos por ambiente, eliminando la configuración manual (`kubectl apply`).
 
-![ArgoCD Dashboard](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/gitops/argocd.png)
+![ArgoCD Dashboard](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/gitops-exercise/docs/images/gitops/argocd.png)
 
 ---
 
