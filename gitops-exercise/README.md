@@ -6,7 +6,7 @@ Este repositorio documenta un marco de trabajo (framework) de infraestructura al
 
 El framework se basa en una arquitectura de microservicios desplegada en Kubernetes, orquestada mediante un flujo de CI/CD automatizado.
 
-![Diagrama de Arquitectura de GitOps](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/gitops-exercise/docs/images/gitops/GitHub-CICD-Pipeline.png)
+![Diagrama de Arquitectura de GitOps](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/gitops-exercise/docs/images/gitops/GitHub-CICD-Pipeline2.png)
 
 ### Componentes Clave:
 * **Orquestación:** Kubernetes (Cluster agnóstico).
