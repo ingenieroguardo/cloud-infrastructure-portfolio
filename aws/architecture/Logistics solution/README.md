@@ -13,7 +13,7 @@ Esta arquitectura fue diseñada para una plataforma logística con el objetivo d
 ## 🗺️ Visualización de la Arquitectura 
 La solución asegura una alta disponibilidad mediante el despliegue en múltiples zonas de disponibilidad (Multi-AZ):
 
-![Diagrama de Arquitectura](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/Diseño_arquitectónico/logistica.png)
+![Diagrama de Arquitectura](https://github.com/ingenieroguardo/cloud-infrastructure-portfolio/blob/main/docs/images/Diseño_arquitectónico/logistica.svg)
 Diagrama de flujo de datos y componentes de la plataforma.
 
 ## ⚙️ CI/CD Pipeline con GitHub Actions
