@@ -43,3 +43,5 @@ Esta arquitectura ha sido diseñada bajo principios de alta disponibilidad, cont
 - **Caché:** ElastiCache para Redis
 - **Analytics:** AWS Glue, Amazon Redshift
 - **Inteligencia:** Amazon Lex (Chatbots)
+
+**Autor:** [Idelfonso Guardo](https://github.com/ingenieroguardo)
