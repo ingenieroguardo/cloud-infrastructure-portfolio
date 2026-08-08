@@ -1,39 +1,39 @@
-# Cloud Infrastructure Portfolio ☁️
+# Apsara | Cloud & AI Solutions ☁️🤖
 
 [![Terraform](https://img.shields.io/badge/Terraform-1.5+-623CE4.svg?style=flat&logo=terraform)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-Solutions%20Architect-232F3E.svg?style=flat&logo=amazon-aws)](https://aws.amazon.com/)
 [![OCI](https://img.shields.io/badge/OCI-Architect%20Professional-F80000.svg?style=flat&logo=oracle)](https://www.oracle.com/cloud/)
-[![GitOps](https://img.shields.io/badge/GitOps-ArgoCD-ef6b2e.svg?style=flat&logo=argocd)](https://argoproj.github.io/argo-cd/)
+[![AI-Automation](https://img.shields.io/badge/AI-Automation-00C853.svg?style=flat&logo=openai)](https://apsara-brand.com)
 
-## 🚀 Propósito del Proyecto
-Este repositorio documenta mi experiencia en **Infraestructura como Código (IaC)** y **Automatización de Despliegues**. Aquí centralizo arquitecturas escalables y procesos de entrega continua, demostrando dominio en **AWS**, **OCI** y metodologías modernas de **GitOps**.
+## 🚀 Acerca de Apsara
+Apsara es mi identidad de consultoría técnica donde fusiono más de una década de experiencia en **Arquitectura Cloud (AWS/OCI)** con **IA y Automatización inteligente**. Mi enfoque trasciende la configuración técnica: soy un aliado estratégico para alinear la infraestructura y la automatización con los objetivos financieros y de negocio de tu organización.
 
 ---
 
-## 🏗️ Roadmap de Implementación
+## 🏗️ Portafolio de Soluciones
 
-| Proveedor | Proyecto | Estatus | Tecnologías Clave |
+| Área | Proyecto | Estatus | Tecnologías Clave |
 | :--- | :--- | :--- | :--- |
-| **AWS** | [Scalable Web Cluster](./aws) | ✅ Completado | VPC, EKS, NAT GW |
-| **OCI** | [Cloud Native Architecture](./oci) | ✅ Completado | OKE, VCN, Security Lists |
-| **GitOps** | [Automated Infrastructure](./gitops-exercise) | ✅ Completado | ArgoCD, Helm, GitHub Actions |
+| **Cloud** | [Scalable Web Cluster](./aws) | ✅ Prod | EKS, VPC, Terraform |
+| **Cloud** | [Cloud Native Architecture](./oci) | ✅ Prod | OKE, VCN, OCI Native |
+| **AI Agents** | [Customer/Internal Agents](./ai/agentes) | 🚧 Beta | LLMs, RAG, LangChain |
+| **GitOps** | [Automated Infrastructure](./gitops-exercise) | ✅ Prod | ArgoCD, GitHub Actions |
 
 ---
 
-## 🌟 ¿Qué encontrarás aquí?
-
-- **Enfoque Enterprise**: Código modularizado y estandarizado, listo para entornos productivos.
-- **GitOps & Automation**: Implementación de **CI/CD con GitHub Actions y ArgoCD**, garantizando que el repositorio sea la única "fuente de la verdad".
-- **Observabilidad**: Implementación de stacks de monitoreo (**Prometheus/Grafana**) para garantizar la salud de los servicios desde el despliegue.
-- **Seguridad by Design**: Arquitecturas validadas con segmentación de red y principio de menor privilegio.
+## 🌟 ¿Por qué Apsara?
+- **Aliado Estratégico**: Experiencia probada en sectores de alta complejidad (banca, hidrocarburos, salud).
+- **Innovación en IA**: Desarrollo de agentes inteligentes que optimizan procesos operativos.
+- **Robustez "by Design"**: Seguridad, escalabilidad y estandarización como base de cada entrega.
 
 ## 📂 Estructura del Repositorio
 ```bash
 .
-├── aws/                # Módulos de AWS (EKS, VPC)
-├── oci/                # Módulos de OCI (OKE, VCN)
-├── gitops-exercise/    # Automatización con ArgoCD, Helm y Observabilidad
-└── docs/               # Diagramas y evidencias de despliegue
+├── aws/           # Infraestructura Cloud AWS
+├── oci/           # Infraestructura Cloud OCI
+├── ai/            # Soluciones de IA (Agentes & Chatbots)
+├── gitops/        # Automatización y CI/CD
+└── docs/          # Arquitecturas y casos de éxito
 
 📧 Contacto
 ¿Interesado en colaborar o conocer más sobre mi trayectoria?
@@ -42,4 +42,4 @@ Perfil LinkedIn: https://www.linkedin.com/in/idelfonsocloudsolutionsengineer/
 
 📧 Correo: ingeniero.guardo@gmail.com
 
-Autor: Idelfonso Guardo | Cloud & Solutions Architect
+Autor: Idelfonso Guardo | Arquitecto de Soluciones Senior & Estratega Cloud
