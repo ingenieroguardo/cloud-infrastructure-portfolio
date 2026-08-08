@@ -16,7 +16,7 @@ Apsara es mi identidad de consultoría técnica donde fusiono más de una décad
 | :--- | :--- | :--- | :--- |
 | **Cloud** | [Scalable Web Cluster](./aws) | ✅ Prod | EKS, VPC, Terraform |
 | **Cloud** | [Cloud Native Architecture](./oci) | ✅ Prod | OKE, VCN, OCI Native |
-| **AI Agents** | [Customer/Internal Agents](./ai/agentes) | 🚧 Beta | LLMs, RAG, LangChain |
+| **AI Agents** | [Customer/Internal Agents](./ai/agentes) | ✅ Prod | LLMs, RAG, LangChain |
 | **GitOps** | [Automated Infrastructure](./gitops-exercise) | ✅ Prod | ArgoCD, GitHub Actions |
 
 ---
