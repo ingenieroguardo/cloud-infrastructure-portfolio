@@ -1,0 +1,31 @@
+[project]
+name = "sales-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Idel Guardo", email = "iguardo@consultec-ti.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "certifi>=2026.7.22",
+    "chromadb>=1.5.9",
+    "gradio>=6.25.0",
+    "langchain-community>=0.4.2",
+    "langchain-openai>=1.6.0",
+    "langchain-text-splitters>=1.1.2",
+    "openai>=3.3.1",
+    "openai-agents>=0.0.15",
+    "pydantic>=2.13.4",
+    "pypdf>=6.16.1",
+    "python-dotenv>=1.2.3",
+    "requests>=2.34.2",
+    "sendgrid>=6.12.5",
+]
+
+[project.scripts]
+sales-agent = "sales_agent:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"

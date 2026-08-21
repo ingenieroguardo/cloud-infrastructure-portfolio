@@ -1,0 +1,10 @@
+# Dependencias y entornos
+.venv/
+__pycache__/
+*.pyc
+
+# Variables de entorno y secretos
+.env
+
+# Base de datos vectorial local de Chroma
+chromadb/
