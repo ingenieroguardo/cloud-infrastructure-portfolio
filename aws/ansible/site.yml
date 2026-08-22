@@ -1,0 +1,45 @@
+---
+- name: Configurar Servidor Web Estándar con Nginx
+  hosts: webservers
+  become: yes  
+  
+  tasks:
+    - name: Asegurar que Nginx está instalado 
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Asegurar que el servicio Nginx está iniciado y habilitado en el arranque
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Crear una página web HTML personalizada para la demo
+      ansible.builtin.copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Enyoi - DevOps Demo</title>
+          </head>
+          <body>
+            <h1>Servidor Automatizado con Ansible y AWS</h1>
+            <p>Despliegue exitoso para el programa SkillUp.</p>
+          </body>
+          </html>
+        dest: /usr/share/nginx/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Verificar que Nginx responde localmente (Evidencia de funcionamiento)
+      ansible.builtin.uri:
+        url: http://localhost
+        return_content: yes
+        status_code: 200
+      register: web_check
+
+    - name: Mostrar el resultado de la verificación en pantalla
+      ansible.builtin.debug:
+        msg: "El servidor web respondió correctamente. Estado HTTP OK."
