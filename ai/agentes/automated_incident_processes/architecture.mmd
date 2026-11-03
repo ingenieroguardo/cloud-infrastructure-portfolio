@@ -1,0 +1,58 @@
+flowchart TB
+    SRC["Fuente de alerta / webhook<br/>observabilidad + ticketing"]
+
+    subgraph EKS["Clúster Amazon EKS"]
+        direction TB
+        EDGE["Servidor de runtime<br/>verificación HMAC + idempotencia<br/>fast-202"]
+        Q[("Cola de trabajo durable<br/>Redis")]
+        W["Worker — IncidentManager<br/>OpenAI Agents SDK"]
+
+        subgraph AGENTS["Clúster de 6 agentes (handoffs)"]
+            direction LR
+            CMD["Commander<br/>Sonnet · orquesta"]
+            TRI["Triage<br/>Haiku"]
+            CTX["Context<br/>Haiku"]
+            CHG["Changer<br/>Haiku"]
+            COM["Communicator<br/>Haiku"]
+            REV["Reviewer<br/>Sonnet"]
+        end
+
+        BR["Amazon Bedrock<br/>Claude Sonnet / Haiku<br/>+ embeddings Titan"]
+        REDIS[("Redis<br/>estado vivo + timeline")]
+        CHROMA[("ChromaDB<br/>runbooks + postmortems")]
+        MCP["Capa MCP<br/>mínimo privilegio"]
+        PODID["EKS Pod Identity<br/>sin llaves estáticas"]
+    end
+
+    HUMAN{{"SRE de guardia<br/>decisión HITL"}}
+    OPS["Contención · Comunicación · RCA"]
+    END["Cierre / enrutar a<br/>gestión de solicitudes"]
+
+    OBS["Observabilidad<br/>solo lectura"]
+    CHAT["Chat / war-room<br/>acotado"]
+    SOT["Sistema de registro<br/>RW acotado"]
+
+    SRC -->|webhook firmado| EDGE
+    EDGE --> Q --> W
+    W --> AGENTS
+    W <-->|razonar| BR
+    W <-->|estado| REDIS
+    W <-->|RAG| CHROMA
+    BR -.->|embeddings Titan| CHROMA
+    W -->|herramientas| MCP
+    PODID -.->|auth IAM| BR
+
+    MCP --> OBS
+    MCP --> CHAT
+    MCP --> SOT
+
+    W -->|paquete consolidado| HUMAN
+    HUMAN -->|declara P1-P3| OPS
+    HUMAN -->|no declara| END
+
+    classDef human fill:#ffe9c7,stroke:#d98a00,stroke-width:2px,color:#000;
+    classDef store fill:#e7f0ff,stroke:#2b6cb0,color:#000;
+    classDef model fill:#eadcff,stroke:#6b46c1,color:#000;
+    class HUMAN human;
+    class Q,REDIS,CHROMA store;
+    class BR model;
