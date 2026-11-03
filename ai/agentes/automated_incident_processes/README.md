@@ -11,10 +11,6 @@ prompts.
 > y el **Model Context Protocol (MCP)**. Desplegado con GitOps (ArgoCD) y validado de
 > punta a punta contra infraestructura cloud real.
 
-![Arquitectura del sistema multiagente de respuesta a incidentes](architecture.png)
-
-> Fuente del diagrama: [`architecture.mmd`](architecture.mmd) (Mermaid).
-
 ---
 
 ## Tabla de contenido
@@ -92,6 +88,8 @@ flowchart TB
     MCP --> CHAT["Chat / war-room (acotado)"]
     MCP --> SOT["Sistema de registro (RW acotado)"]
 ```
+
+> Fuente editable del diagrama: [`architecture.mmd`](architecture.mmd) (Mermaid).
 
 **Forma del diseño:**
 
